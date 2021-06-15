@@ -38,7 +38,7 @@ class Offices(models.Model):
 
 
 class Workers(models.Model):
-    """Whistleblower complaints filed with the MPT office"""
+    """Profiles for workers in company"""
 
     office = models.ForeignKey(
         Offices,
