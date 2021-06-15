@@ -6,4 +6,4 @@ requires = [
 ]
 
 [tool.setuptools_scm]
-write_to = 'src/odyssey_scraper/_version.py'
+write_to = 'autodoc/_version.py'
