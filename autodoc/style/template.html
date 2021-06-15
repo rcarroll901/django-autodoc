@@ -1,0 +1,42 @@
+<html>
+
+<head>
+    <title>Home</title>
+    <link href="style.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+    {% for model in models %}
+    <table class="styled-table">
+        <thead>
+            <tr>
+                <th>
+                    <font size="11">{{model.__name__}}</font>
+                </th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <thead>
+            <tr>
+                <th>Field</th>
+                <th>Type</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+        {% for field in model._meta.fields %}
+        <tr>
+            <td>{{field.name}}</td>
+            <td>{{field.get_internal_type() if field.name != 'id' else 'PrimaryKey'}}</td>
+            <td>{{field.help_text if field.name != 'id' else 'Primary key of table'}}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endfor %}
+</body>
+
+</html>
