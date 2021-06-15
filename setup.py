@@ -7,6 +7,10 @@ setuptools.setup(
     name="django-orm-autodoc",
     author="Ryan Carroll",
     author_email="raec901@gmail.com",
+    use_scm_version={
+        "local_scheme": "node-and-date",
+        "write_to": "src/odyssey_scraper/_version.py",
+    },
     description="Package to create HTML documentation of Django models",
     long_description=long_description,
     long_description_content_type="text/markdown",
@@ -19,4 +23,7 @@ setuptools.setup(
     install_requires=["jinja2", "django", "click"],
     python_requires=">=3.6",
     entry_points={"console_scripts": ["django_autodoc=autodoc.cli:main"]},
+    setup_requires=[
+        "setuptools_scm>=3.3.1",
+    ],
 )
