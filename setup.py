@@ -9,7 +9,7 @@ setuptools.setup(
     author_email="raec901@gmail.com",
     use_scm_version={
         "local_scheme": "node-and-date",
-        "write_to": "src/odyssey_scraper/_version.py",
+        "write_to": "autodoc/_version.py",
     },
     description="Package to create HTML documentation of Django models",
     long_description=long_description,
