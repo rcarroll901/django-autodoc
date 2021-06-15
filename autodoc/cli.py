@@ -12,7 +12,6 @@ import click
 # tell Django where to look for files and "start" app
 sys.path.append(".")
 sys.path.append(os.getcwd())
-print("current directory:", os.getcwd())
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 from django.core.wsgi import get_wsgi_application
 
@@ -29,12 +28,6 @@ from .tools import PythonLiteralOption
     default="db.models",
     help="Path to the Django models.py file in import notation (e.g. db.models)",
 )
-# @click.option(
-#     "--models-list",
-#     cls=PythonLiteralOption,
-#     default=[],
-#     help="List of models to document and/or the order to document them in",
-# )
 @click.option(
     "--output-path",
     "-o",
@@ -52,8 +45,6 @@ def main(models_path, output_path):
         for name, obj in inspect.getmembers(models_mod)
         if type(obj) == django.db.models.base.ModelBase
     }
-    # if models_list:
-    #     my_models = [my_models[key] for key in models_list]
 
     dir_path = os.path.dirname(os.path.realpath(__file__))
     style_path = os.path.join(dir_path, "style/")
