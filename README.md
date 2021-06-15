@@ -1,6 +1,6 @@
 # django-orm-autodoc
 
-The purpose of this library is the provide self-generating documenationt for
+The purpose of this library is the provide self-generating documentation for
 applications using Django's ORM in a standalone context. 
 
 ## Installation
@@ -10,11 +10,11 @@ If you connect to GitHub with ssh, install with:
 foo@bar:~ $ pipenv install git+ssh://git@github.com/rcarroll901/django-orm-autodoc.git#egg=django_orm_autodoc
 ```
 
-Or do analgous command for https connection.
+Or do analogous command for https connection.
 
 ## Inline Documentation
 
-Documentation is generated from using the `help_text` argument of Django fields. All Django models within that module will be automatically detected, so listing out the models is not requred. For example:
+Documentation is generated from using the `help_text` argument of Django fields. All Django models within the `models.py` module will be automatically detected, so listing out the models is not requred. For example:
 
 ```python
 class Offices(models.Model):
