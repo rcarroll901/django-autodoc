@@ -1,6 +1,6 @@
 # django-orm-autodoc
 
-The purpose of this library is the provide self-generating documentation for
+The purpose of this library is the provide self-generating documenationt for
 applications using Django's ORM in a standalone context. 
 
 ## Installation
@@ -10,11 +10,11 @@ If you connect to GitHub with ssh, install with:
 foo@bar:~ $ pipenv install git+ssh://git@github.com/rcarroll901/django-orm-autodoc.git#egg=django_orm_autodoc
 ```
 
-Or do analogous command for https connection.
+Or do analgous command for https connection.
 
 ## Inline Documentation
 
-Documentation is generated from using the `help_text` argument of Django fields. All Django models within the `models.py` module will be automatically detected, so listing out the models is not requred. For example:
+Documentation is generated from using the `help_text` argument of Django fields. All Django models within that module will be automatically detected, so listing out the models is not requred. For example:
 
 ```python
 class Offices(models.Model):
@@ -30,7 +30,7 @@ class Offices(models.Model):
         help_text="Name of the municipality that the office is within.",
     )  # should be FK to munic table
     n_workers = models.IntegerField(
-        help_text="Number of total workerswithin the office"
+        help_text="Number of total workers within the office"
     )
 
     class Meta:
@@ -43,7 +43,7 @@ class Workers(models.Model):
     office = models.ForeignKey(
         Offices,
         on_delete=models.CASCADE,
-        help_text="Primary key of the office to which the complaint was filed.",
+        help_text="Primary key of the office at which the person works",
     )
     hiring_date = models.DateField(help_text="Date that the worker was hired")
     has_children = models.BooleanField(
@@ -55,7 +55,7 @@ class Workers(models.Model):
 ```
  will yield:
 
- ![Screen Shot 2021-06-15 at 1 19 29 PM](https://user-images.githubusercontent.com/47673958/122103580-666f4700-cddc-11eb-8508-c0c9bb624534.png)
+![Screen Shot 2021-06-15 at 1 32 56 PM](https://user-images.githubusercontent.com/47673958/122105289-388b0200-cdde-11eb-93a1-f2a05d4da958.png)
 
 ## CLI
 
