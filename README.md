@@ -14,7 +14,8 @@ Or do analgous command for https connection.
 
 ## Inline Documentation
 
-Documentation is generated from using the `help_text` argument of Django fields. For example:
+Documentation is generated from using the `help_text` argument of Django fields. All Django models within that module will be automatically detected, so listing out the models is not requred. For example:
+
 ```python
 class Offices(models.Model):
     """Information about Offices"""
