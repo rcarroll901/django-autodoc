@@ -1,6 +1,4 @@
-from autodoc.tools import PythonLiteralOption
 import os
-from datetime import date
 import inspect
 import sys
 import shutil
@@ -16,9 +14,6 @@ os.environ.setdefault("DJANGO_SETTINGS_MODULE", "settings")
 from django.core.wsgi import get_wsgi_application
 
 application = get_wsgi_application()
-
-# get access to the tables for upload
-from .tools import PythonLiteralOption
 
 
 @click.command()
