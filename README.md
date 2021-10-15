@@ -13,6 +13,8 @@ foo@bar:~ $ pipenv install git+ssh://git@github.com/rcarroll901/django-orm-autod
 
 Or do analgous command for https connection.
 
+In your environment, define the path to the `settings.py` module in the usual Django way. If the app is standalone and you only have a `manage.py` (with `django.setup()` called after configuration is defined), then point to the `manage.py` in the analogous way.
+
 ## Inline Documentation
 
 Documentation is generated from using the `help_text` argument of Django fields. All Django models within that module will be automatically detected, so listing out the models is not requred. For example:
