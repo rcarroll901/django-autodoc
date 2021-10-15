@@ -17,6 +17,14 @@
                 <th></th>
             </tr>
         </thead>
+        <tbody>
+        
+            <tr>
+                <td>{{model.__doc__}}</td>
+                <td></td>
+                <td></td>
+            </tr>
+                </tbody> 
         <thead>
             <tr>
                 <th>Field</th>
@@ -31,7 +39,7 @@
         <tr>
             <td>{{field.name}}</td>
             <td>{{field.get_internal_type() if field.name != 'id' else 'PrimaryKey'}}</td>
-            <td>{{field.help_text if field.name != 'id' else 'Primary key of table'}}</td>
+            <td>{{field.help_text if field.name != 'id' else 'PK of Table'}}</td>
         </tr>
         {% endfor %}
         </tbody>

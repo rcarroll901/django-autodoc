@@ -19,7 +19,7 @@
 
 .styled-table thead tr {
     background-color: #121212;
-    color: #03DAC5;
+    color: #e78d32;
     text-align: left;
 }
 
@@ -42,11 +42,11 @@
 
 .styled-table tbody tr:nth-of-type(odd) {
     background-color: #1a1d24;
-    color: white;
+    color: #d1d0cc;
 }
 
 .styled-table tbody tr:last-of-type {
-    border-bottom: 1px solid #03DAC5;
+    border-bottom: 1px solid #d1cccf;
 }
 
 .styled-table tbody tr.active-row {
