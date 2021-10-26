@@ -20,45 +20,36 @@ In your environment, define the path to the `settings.py` module in the usual Dj
 Documentation is generated from using the `help_text` argument of Django fields. All Django models within that module will be automatically detected, so listing out the models is not requred. For example:
 
 ```python
-class Offices(models.Model):
-    """Information about Offices"""
+class Case(models.Model):
+    """Each row in this table represents a single, unique case along with the
+    highest level details about it. All updates on this table are done via the
+    unique case number (case_num) found in Odyssey."""
 
-    name = models.CharField(
-        max_length=40,
-        unique=True,
-        help_text="Name of the office (e.g. OFF01, OFF02, etc...",
-    )
-    munic_id = models.CharField(
-        max_length=8,
-        help_text="Name of the municipality that the office is within.",
-    )  # should be FK to munic table
-    n_workers = models.IntegerField(
-        help_text="Number of total workers within the office"
-    )
-
-    class Meta:
-        db_table = "offices"
-
-
-class Workers(models.Model):
-    """Profiles for workers in company"""
-
-    office = models.ForeignKey(
-        Offices,
+    person = models.ForeignKey(
+        Person,
         on_delete=models.CASCADE,
-        help_text="Primary key of the office at which the person works",
+        help_text="PK of person associated to case",
     )
-    hiring_date = models.DateField(help_text="Date that the worker was hired")
-    has_children = models.BooleanField(
-        help_text="Whether or not the worker has children"
+    case_num = models.CharField(
+        max_length=255,
+        unique=True,
+        help_text="Case identifier number. First two digits typically indicate the year the case was filed. Cases beginning with a letter are typically in Criminal Court as well as cases with IDs that have length > 10.",
+    )
+    file_date = models.DateField(
+        null=True, help_text="Date that the case was created"
     )
 
     class Meta:
-        db_table = "workers"
+        db_table = "case"
+
 ```
  will yield:
 
-![Screen Shot 2021-06-15 at 1 32 56 PM](https://user-images.githubusercontent.com/47673958/122105289-388b0200-cdde-11eb-93a1-f2a05d4da958.png)
+![Screenshot from 2021-10-26 00-54-04](https://user-images.githubusercontent.com/47673958/138824403-bc16bafe-2edb-4690-876c-1e6b4436a87b.png)
+
+Also note that the docstring of the model becomes the table description. The
+module puts the CSS code next to the HTML, allowing the user to customize the
+CSS and will not overwrite it.
 
 ## CLI
 
@@ -72,6 +63,15 @@ foo@bar:~ $ django_autodoc --help
 
 yields
 
-![Screen Shot 2021-06-15 at 1 09 05 PM](https://user-images.githubusercontent.com/47673958/122102336-f01e1500-cdda-11eb-8d85-089d7d95f25b.png)
+```text
+Usage: django_autodoc [OPTIONS]
+
+Options:
+  -p, --models-path TEXT   Path to the Django models.py file in import 
+                           notation (e.g. "db.models")
+  -o, --output-path TEXT   Directory of where to output the HTML/CSS 
+                           files
+  --help                   Show this message and exit
+```
 
 The default for `--models-path` is `"db.models"` and for `--output-path` is `"docs/db/"`. Again, note that `--models-path` should be in the form of a Python import.
